@@ -67,10 +67,12 @@ function renderPizza({ el, from = 1, to = 14, neg = false }) {
   }
 }
 function play(audioFile, loop = false) {
-  if (mute.textContent === "Unmute") return;
+  const muted = mute.textContent === "Unmute";
+  if (muted && !loop) return;
   const audio = new Audio("assets/" + audioFile);
   audio.loop = loop;
   !debugMode && audio.play();
+  muted && audio.pause();
   return audio;
 }
 
