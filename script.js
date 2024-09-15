@@ -67,6 +67,7 @@ function renderPizza({ el, from = 1, to = 14, neg = false }) {
   }
 }
 function play(audioFile, loop = false) {
+  if (mute.textContent === "Unmute") return;
   const audio = new Audio("assets/" + audioFile);
   audio.loop = loop;
   !debugMode && audio.play();
